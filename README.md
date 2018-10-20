@@ -12,12 +12,12 @@ Angular 6 , Node ^v10.6.0, mongod version ^v3.4.9 , nodemon(Better if you instal
 		npm start
 
 # Feature:
-	1. Login and Registration page (Took reference from David Acousta MEAN Youtube Video)
-	2. Forget password and email id
-	3. Profile edit and view mode
-	4. Reset Password
-	5. Breakout Game (Initial phase , more changes will come here)
-	6. AuthGaurd for safe navigation
-	7. Redirect back To the same page after Login
-	8. Login session for 24hrs
+	1. Login and Registration page (Took reference from David Acousta MEAN Youtube Video).
+	2. Forget password and email id.
+	3. Profile edit and view mode.
+	4. Reset Password.
+	5. Breakout Game (Initial phase , more changes will come here).
+	6. AuthGaurd for safe navigation.
+	7. Redirect back To the same page after Login.
+	8. Login session.
 		
