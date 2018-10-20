@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    label{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.error{
+    color:$error-red;
+}
+
+

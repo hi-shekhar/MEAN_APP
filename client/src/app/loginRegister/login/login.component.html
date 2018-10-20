@@ -1,0 +1,43 @@
+<div class="login-container">
+    <div class="avatar" [ngClass]="isUserEmailValid ? (gender === 'male' ? 'male-icon': 'female-icon') : 'email-not-valid'"></div>
+    <form class="form-box" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="input-container">
+            <label for="email">
+                <i class="fa fa-envelope icon"></i>
+            </label>
+            <div [ngClass]="{'has-error' : (loginForm.get('userEmail').touched || 
+            loginForm.get('userEmail').dirty) && !loginForm.get('userEmail').valid}"
+                class="input-field-container">
+                <input class="input-field" type="email" placeholder="Email" formControlName="userEmail" id="email"
+                    (blur)="checkEmailValidity()">
+            </div>
+        </div>
+
+        <div class="input-container">
+            <label for="pass">
+                <i class="fa fa-key icon"></i>
+            </label>
+            <div [ngClass]="{'has-error' : (loginForm.get('userPassword').touched || 
+            loginForm.get('userPassword').dirty) &&!loginForm.get('userPassword').valid}"
+                class="input-field-container">
+                <input class="input-field" type="password" placeholder="Password" formControlName="userPassword" id="pass">
+            </div>
+        </div>
+
+        <div class="logReg-box">
+            <button type="submit" class="logReg-button" [disabled]="!loginForm.valid">Log In</button>
+        </div>
+    </form>
+    <div class="help-box">
+        <div class="help-link">
+            <a [routerLink]="['/register']">Create an account</a>
+        </div>
+        <div class="help-link">
+            <a [routerLink]="['/trouble']">Trouble in Login ?</a>
+        </div>
+    </div>
+    <div class="alert alert-info alert-dismissible margin-top-32" *ngIf="loggedInMessage?.message">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{loggedInMessage?.message}}</strong>
+    </div>
+</div>

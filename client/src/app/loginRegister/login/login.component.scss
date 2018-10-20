@@ -1,0 +1,56 @@
+@import './../../../variables.scss';
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 1000;
+    // margin: 0 auto;
+    padding: 3% 35% ;
+    .avatar {
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+    }
+    .male-icon {
+        background: url('./../../../assets/male-icon.png') no-repeat center;
+    }
+    .female-icon {
+        background: url('./../../../assets/female-icon.png') no-repeat center;
+    }
+    .email-not-valid {
+        background: url('./../../../assets/email-not-valid.png') no-repeat center;
+    }
+    .form-box {
+        .input-container {
+            display: flex;
+            width: 100%;
+            margin: 15px 0;
+            box-sizing: border-box;
+            .icon {
+                padding: 20px;
+                background: $dark-green;
+                color: white;
+                min-width: 50px;
+                text-align: center;
+            }
+            .input-field-container {
+                flex: 1;
+                .input-field {
+                    width: 100%;
+                    padding: 14px 5px;
+                    color: $dark-green;
+                    font-weight: 700;
+                }
+            }
+            .input-field-container:focus {
+                border: 2px solid $dark-green;
+            }
+        }
+
+    }
+    .margin-top-32{
+        margin-top: 32px;
+    }
+
+}

@@ -1,0 +1,85 @@
+@import './../../variables.scss';
+.login-register-container{
+    position: relative;
+    min-height: 830px;
+
+    .back-ground {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: url('./../../assets/ladakh.jpg');
+        background-size: cover;
+        z-index: -1000;
+        @include blur(1px);
+    }
+}
+
+.has-error {
+    .input-field {
+        background-color: $error-red;
+        color: $red;
+    }
+    ::placeholder {
+        color: $red;
+        font-weight: 700;
+    }
+}
+.logReg-box {
+    .logReg-button {
+        background-color: $dark-green;
+        color: $white;
+        padding: 15px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+    .logReg-button:hover {
+        background-color: $hover-green;
+    }
+    .logReg-button:disabled{
+        cursor: not-allowed;
+    }
+}
+
+.radio-button-container {
+    flex: 2;
+    display: flex;
+    .input-hidden {
+        display: none;
+    }
+    input[type=radio]:checked+label>img {
+        border: 2px solid $hover-green;
+        width: 30px;
+        height: 30px;
+        border-radius: 40%;
+    }
+    input[type=radio]+label>img {
+        border: 2px solid $red;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        transition: 500ms all;
+    }
+}
+
+.help-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    .help-link {
+        a {
+            color: $sky-blue;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+    .help-link {
+        a:hover {
+            color: $light-blue;
+        }
+    }
+}

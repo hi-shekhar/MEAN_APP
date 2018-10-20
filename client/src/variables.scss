@@ -1,0 +1,24 @@
+
+// Color variable
+
+$dark-green: #196f3d;
+$hover-green:#178f15 ;
+$white: #ffffff;
+$blue:#005ffc;
+$navy-blue:#1631dd;
+$sky-blue:#57b9ed;
+$purple:#4a098e;
+$light-blue:#b2e4fe;
+$error-red:#f99d84 ;
+$red:#f20d0a;
+$charcol:#333333;
+
+// mixin
+@mixin blur($value) {
+    -webkit-filter: blur($value);
+    -moz-filter: blur($value);
+    -o-filter: blur($value);
+    -ms-filter: blur($value);
+    filter: blur($value);
+}
+

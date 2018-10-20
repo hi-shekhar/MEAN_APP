@@ -1,0 +1,96 @@
+<div class="login-trouble-container">
+  <div class="login-trouble-heading">Login Trouble Shoot {{reasonSelected?.toUpperCase()}}</div>
+  <form class="form-box" [formGroup]="loginTroubleForm" (ngSubmit)="loginTrouble()">
+    <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('forgot').touched || loginTroubleForm.get('forgot').dirty) && !loginTroubleForm.get('forgot').valid }">
+      <label class="">Forgot</label>
+      <div class="radio-button-container">
+        <input type="radio" class="input-field" value="email" id="forgetEmail" class="input-hidden" formControlName="forgot" />
+        <label for="forgetEmail">
+          <img src="/assets/email-icon.png" title="forget email id" />
+        </label>
+
+        <input type="radio" class="input-field" value="password" id="forgetPassword" class="input-hidden"
+          formControlName="forgot" />
+        <label for="forgetPassword">
+          <img src="/assets/pswd-icon.png" title="forget password" />
+        </label>
+      </div>
+    </div>
+    <div *ngIf="reasonSelected">
+      <div *ngIf="reasonSelected === 'email'; else resetPassword">
+        <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('dob').touched || loginTroubleForm.get('dob').dirty) && !loginTroubleForm.get('dob').valid }">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="input-field" id="dob" placeholder="Date of Birth" formControlName="dob">
+        </div>
+        <div formGroupName="secretQuestionGroup">
+          <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('secretQuestionGroup.secretQuestion').touched || loginTroubleForm.get('secretQuestionGroup.secretQuestion').dirty) && !loginTroubleForm.get('secretQuestionGroup.secretQuestion').valid }">
+            <label for="secretQuestion">Secret Question</label>
+            <select formControlName="secretQuestion" class="input-field" id="secretQuestion" placeholder="Select Your Secret Question">
+              <option [value]="'Your Pet Name'">Your Pet Name</option>
+              <option [value]="'Your Favourite Teacher'">Your Favourite Teacher</option>
+              <option [value]="'Your Birth Place'">Your Birth Place</option>
+              <option [value]="'Your vechile Name'">Your vechile Name</option>
+            </select>
+          </div>
+          <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('secretQuestionGroup.secretAnswer').touched || loginTroubleForm.get('secretQuestionGroup.secretAnswer').dirty) && !loginTroubleForm.get('secretQuestionGroup.secretAnswer').valid }">
+            <input type="text" class="input-field" id="secretAnswer" placeholder="Enter Your Secret Answer"
+              formControlName="secretAnswer">
+          </div>
+        </div>
+      </div>
+      <ng-template #resetPassword>
+        <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('email').touched || loginTroubleForm.get('email').dirty) && !loginTroubleForm.get('email').valid }">
+          <label for="email">Email </label>
+          <input type="text" class="input-field" id="email" placeholder="Email" formControlName="email">
+        </div>
+        <div formGroupName="passwordGroup">
+          <div class="input-conatiner" [ngClass]="{'has-error' : (loginTroubleForm.get('passwordGroup.password').touched || loginTroubleForm.get('passwordGroup.password').dirty) && !loginTroubleForm.get('passwordGroup.password').valid }">
+            <label for="password">Password</label>
+            <input type="password" class="input-field" id="password" placeholder="Password" formControlName="password">
+          </div>
+          <div class="input-conatiner">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="input-field" id="confirmPassword" placeholder="ConfirmPassword"
+              formControlName="confirmPassword">
+          </div>
+          <div class="error" *ngIf="(loginTroubleForm.get('passwordGroup.confirmPassword').touched || loginTroubleForm.get('passwordGroup.confirmPassword').dirty)
+            && (loginTroubleForm.get('passwordGroup.confirmPassword').errors || loginTroubleForm.get('passwordGroup').errors)">
+            <span *ngIf="!!loginTroubleForm.get('passwordGroup.confirmPassword')?.errors?.required">
+              please confirm your password
+            </span>
+            <span *ngIf="!!loginTroubleForm.get('passwordGroup')?.errors?.match">
+              confirm password do not match actual password
+            </span>
+          </div>
+        </div>
+      </ng-template>
+      <div class="logReg-box">
+        <button type="submit" class="logReg-button" [disabled]="!loginTroubleForm.valid">{{ reasonSelected === 'email' ? 'Get Email':'Reset Password'}}</button>
+      </div>
+      <div class="help-box">
+        <div class="help-link">
+          <a [routerLink]="['/register']">Create an account</a>
+        </div>
+        <div class="help-link">
+          <a [routerLink]="['/login']">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="result-alert-box margin-top-32" *ngIf="loginTroubleResult">
+    <div class="alert alert-success alert-dismissible" *ngIf="isSuccess; else failure">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <p *ngIf="reasonSelected === 'email'">
+        <strong>Success!</strong>
+        {{' Your Email Address : '+ loginTroubleResult?.email}}
+      </p>
+      <p *ngIf="reasonSelected === 'password'"><strong>Success!</strong>{{loginTroubleResult?.message}}</p>
+    </div>
+    <ng-template #failure>
+      <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Failure!</strong>{{' '+loginTroubleResult?.message}}
+      </div>
+    </ng-template>
+  </div>
+</div>

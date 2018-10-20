@@ -1,0 +1,79 @@
+<div class="register-container">
+  <div class="register-heading">Create Your Account</div>
+  <form class="form-box" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('firstName').touched || registerForm.get('firstName').dirty) && !registerForm.get('firstName').valid }">
+      <label for="firstName">First Name</label>
+      <input type="text" class="input-field" id="firstName" placeholder="First Name" formControlName="firstName">
+    </div>
+    <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('lastName').touched || registerForm.get('lastName').dirty) && !registerForm.get('lastName').valid }">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="input-field" id="lastName" placeholder="Last Name" formControlName="lastName">
+    </div>
+    <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('gender').touched || registerForm.get('gender').dirty) && !registerForm.get('gender').valid }">
+      <label class="">Gender</label>
+      <div class="radio-button-container">
+        <input type="radio" class="input-field" value="male" id="male" class="input-hidden" formControlName="gender" />
+        <label for="male">
+          <img src="/assets/male-icon.png" />
+        </label>
+
+        <input type="radio" class="input-field" value="female" id="female" class="input-hidden" formControlName="gender" />
+        <label for="female">
+          <img src="/assets/female-icon.png" />
+        </label>
+      </div>
+    </div>
+    <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('email').touched || registerForm.get('email').dirty) && !registerForm.get('email').valid }">
+      <label for="email">Email</label>
+      <input type="text" class="input-field" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div formGroupName="passwordGroup">
+      <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('passwordGroup.password').touched || registerForm.get('passwordGroup.password').dirty) && !registerForm.get('passwordGroup.password').valid }">
+        <label for="password">Password</label>
+        <input type="password" class="input-field" id="password" placeholder="Password" formControlName="password">
+      </div>
+      <div class="input-conatiner">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="input-field" id="confirmPassword" placeholder="ConfirmPassword" formControlName="confirmPassword">
+      </div>
+      <div class="error" *ngIf="(registerForm.get('passwordGroup.confirmPassword').touched || registerForm.get('passwordGroup.confirmPassword').dirty)
+      && (registerForm.get('passwordGroup.confirmPassword').errors || registerForm.get('passwordGroup').errors)">
+        <span *ngIf="!!registerForm.get('passwordGroup.confirmPassword')?.errors?.required">
+          please confirm your password
+        </span>
+        <span *ngIf="!!registerForm.get('passwordGroup')?.errors?.match">
+          confirm password do not match actual password
+        </span>
+      </div>
+    </div>
+    <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('dob').touched || registerForm.get('dob').dirty) && !registerForm.get('dob').valid }">
+      <label for="dob">Date of Birth</label>
+      <input type="date" class="input-field" id="dob" placeholder="Date of Birth" formControlName="dob">
+    </div>
+    <div formGroupName="secretQuestionGroup">
+      <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('secretQuestionGroup.secretQuestion').touched || registerForm.get('secretQuestionGroup.secretQuestion').dirty) && !registerForm.get('secretQuestionGroup.secretQuestion').valid }">
+        <label for="secretQuestion">Secret Question</label>
+        <select formControlName="secretQuestion" class="input-field" id="secretQuestion" placeholder="Select Your Secret Question">
+          <option [value]="'Your Pet Name'">Your Pet Name</option>
+          <option [value]="'Your Favourite Teacher'">Your Favourite Teacher</option>
+          <option [value]="'Your Birth Place'">Your Birth Place</option>
+          <option [value]="'Your vechile Name'">Your vechile Name</option>
+        </select>
+      </div>
+      <div class="input-conatiner" [ngClass]="{'has-error' : (registerForm.get('secretQuestionGroup.secretAnswer').touched || registerForm.get('secretQuestionGroup.secretAnswer').dirty) && !registerForm.get('secretQuestionGroup.secretAnswer').valid }">
+        <input type="text" class="input-field" id="secretAnswer" placeholder="Enter Your Secret Answer" formControlName="secretAnswer">
+      </div>
+    </div>
+    <div class="logReg-box">
+      <button type="submit" class="logReg-button" [disabled]="!registerForm.valid">Register</button>
+    </div>
+  </form>
+  <div class="help-box">
+    <div class="help-link">
+      <a [routerLink]="['/login']">Sign In</a>
+    </div>
+    <div class="help-link">
+      <a [routerLink]="['/trouble']">Trouble in Login ?</a>
+    </div>
+  </div>
+</div>

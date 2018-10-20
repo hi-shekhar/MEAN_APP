@@ -1,0 +1,15 @@
+<div class="header" *ngIf="userName">
+    <ul class="left-side">
+        <li routerLink='/home'><a>Home</a></li>
+    </ul>
+    <ul class="right-side">
+        <li class="dropdown">
+            <a class="dropbtn">{{userName}}</a>
+            <div class="dropdown-content">
+                <a routerLink='/profile'>Profile</a>
+                <a routerLink='/changePassword'>changePassword</a>
+                <a (click)= "logout()">Logout</a>
+            </div>
+        </li>
+    </ul>
+</div>

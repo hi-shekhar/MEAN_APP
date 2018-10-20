@@ -1,0 +1,65 @@
+<div class="profile-background">
+  <app-header-navbar [userName]="userName"></app-header-navbar>
+
+  <div class="back-ground"></div>
+  <div class="profile-container">
+    <div class="profile-heading"><span *ngIf="!isFormNotEditable">Update - </span><span>Profile</span><span><img src="../../../assets/{{editIcon}}"
+          alt="edit" title="{{isFormNotEditable ? 'edit Profile' : 'Do not edit Profile'}}" (click)="editForm()"></span></div>
+    <form class="form-box" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+      <fieldset [disabled]="isFormNotEditable">
+        <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('firstName').touched || profileForm.get('firstName').dirty) && !profileForm.get('firstName').valid }">
+          <label for="firstName">First Name</label>
+          <input type="text" class="input-field" id="firstName" placeholder="First Name" formControlName="firstName">
+        </div>
+        <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('lastName').touched || profileForm.get('lastName').dirty) && !profileForm.get('lastName').valid }">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="input-field" id="lastName" placeholder="Last Name" formControlName="lastName">
+        </div>
+        <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('gender').touched || profileForm.get('gender').dirty) && !profileForm.get('gender').valid }">
+          <label class="">Gender</label>
+          <div class="radio-button-container">
+            <input type="radio" class="input-field" value="male" id="male" class="input-hidden" formControlName="gender" />
+            <label for="male">
+              <img src="/assets/male-icon.png" />
+            </label>
+
+            <input type="radio" class="input-field" value="female" id="female" class="input-hidden" formControlName="gender" />
+            <label for="female">
+              <img src="/assets/female-icon.png" />
+            </label>
+          </div>
+        </div>
+        <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('email').touched || profileForm.get('email').dirty) && !profileForm.get('email').valid }">
+          <label for="email">Email</label>
+          <input type="text" class="input-field" id="email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('dob').touched || profileForm.get('dob').dirty) && !profileForm.get('dob').valid }">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="input-field" id="dob" placeholder="Date of Birth" formControlName="dob">
+        </div>
+        <div formGroupName="secretQuestionGroup">
+          <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('secretQuestionGroup.secretQuestion').touched || profileForm.get('secretQuestionGroup.secretQuestion').dirty) && !profileForm.get('secretQuestionGroup.secretQuestion').valid }">
+            <label for="secretQuestion">Secret Question</label>
+            <select formControlName="secretQuestion" class="input-field" id="secretQuestion" placeholder="Select Your Secret Question">
+              <option [ngValue]="'your pet name'">Your Pet Name</option>
+              <option [ngValue]="'your favourite teacher'">Your Favourite Teacher</option>
+              <option [ngValue]="'your birth place'">Your Birth Place</option>
+              <option [ngValue]="'your vechile name'">Your vechile Name</option>
+            </select>
+          </div>
+          <div class="input-conatiner" [ngClass]="{'has-error' : (profileForm.get('secretQuestionGroup.secretAnswer').touched || profileForm.get('secretQuestionGroup.secretAnswer').dirty) && !profileForm.get('secretQuestionGroup.secretAnswer').valid }">
+            <input type="text" class="input-field" id="secretAnswer" placeholder="Enter Your Secret Answer"
+              formControlName="secretAnswer">
+          </div>
+        </div>
+        <div class="logReg-box" *ngIf="!isFormNotEditable">
+          <button type="submit" class="logReg-button" [disabled]="!profileForm.valid">Update profile</button>
+        </div>
+      </fieldset>
+    </form>
+    <div class="alert alert-info alert-dismissible margin-top-32" *ngIf="profileUpdateMessage">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{profileUpdateMessage}}</strong>
+    </div>
+  </div>
+</div>
