@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderNavbarComponent } from './header-navbar.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpModule } from '@angular/http';
 
 describe('HeaderNavbarComponent', () => {
   let component: HeaderNavbarComponent;
@@ -8,9 +11,10 @@ describe('HeaderNavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderNavbarComponent ]
+      declarations: [HeaderNavbarComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

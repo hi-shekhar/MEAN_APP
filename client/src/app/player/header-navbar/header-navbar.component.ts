@@ -13,9 +13,9 @@ export class HeaderNavbarComponent implements OnInit {
 
   @Input() public userName: string;
   ngOnInit() {
-    const user = localStorage.getItem('user');
-    this.userName = JSON.parse(user).FirstName;
-    console.log(this._storeDataService.userData);
+    // const user = localStorage.getItem('user');
+    // this.userName = JSON.parse(user).FirstName;
+    // console.log(this._storeDataService.userData);
   }
 
   public logout() {

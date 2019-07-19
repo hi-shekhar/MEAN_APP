@@ -8,12 +8,14 @@ import { LaunchPadComponent } from './launch-pad/launch-pad.component';
 import { PlayerRoutingModule } from './player.routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    PlayerRoutingModule
+    PlayerRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     HeaderNavbarComponent,

@@ -46,11 +46,12 @@ export class LaunchPadComponent implements OnInit, AfterViewInit {
   public score = 0;
   // lives
   public lives = 3;
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
 
   public ngOnInit(): void {
     const user = localStorage.getItem('user');
-    this.userName = JSON.parse(user).FirstName;
+    console.log(user);
+    // this.userName = JSON.parse(user).FirstName;
 
     for (let c = 0; c < this.brickColumnCount; c++) {
       this.bricks[c] = [];

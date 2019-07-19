@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthGaurdPlayerService } from './auth-gaurd-player.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthGaurdPlayerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGaurdPlayerService]
+      providers: [AuthGaurdPlayerService],
+      imports: [RouterTestingModule]
     });
   });
 

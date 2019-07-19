@@ -9,6 +9,7 @@ import { PlayerModule } from './player/player.module';
 
 
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     LoginRegister,
-    PlayerModule
+    PlayerModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

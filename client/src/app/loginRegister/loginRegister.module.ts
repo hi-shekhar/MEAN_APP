@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 import { LoginregisterComponent } from './loginregister.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogintroubleComponent } from './logintrouble/logintrouble.component';
 
- import { LoginRegisterRoutingModule } from './login.routing.module';
+import { LoginRegisterRoutingModule } from './login.routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [LoginregisterComponent,
@@ -18,7 +18,8 @@ import { LogintroubleComponent } from './logintrouble/logintrouble.component';
     imports: [CommonModule,
         LoginRegisterRoutingModule,
         ReactiveFormsModule,
-        HttpClientModule]
+        HttpClientModule
+    ]
 })
 
 export class LoginRegister { }
